@@ -15,7 +15,18 @@ FedDebug's interactive debugging module takes inspiration from traditional debug
 Below, we provide step-by-step walkthrough of FedDebug's interactive debugging features in IBMFL. For ease of installation, we offer pre-configured *Docker Image* of FedDebug enabled IBMFL.  
 
 ## Step 1.1: Build FedDebug's Docker Image and Initiate
-Please type `"docker build -t ibmfl ."`.  It will build docker form the `Dockerfile`. To run and interact with `ibmfl` docker type the following command `docker run -it ibmfl`. It will start the docker and now you can interact with it. Type `ls` in the docker shell to display the current directory content to check whether everything is installed correctly.  You can check more about dockers on the following link [Docker Tutorial](https://docs.docker.com/get-started/).
+Go to `debugging constructs` directory (`cd debugging-constructs`). Please type `"docker build -t ibmfl ."`.  It will build docker form the `Dockerfile`. To run and interact with `ibmfl` docker type the following command `docker run -it ibmfl`. It will start the docker and now you can interact with it. Type `ls` in the docker shell to display the current directory content to check whether everything is installed correctly.  You can check more about dockers on the following link [Docker Tutorial](https://docs.docker.com/get-started/).
+
+```
+cd debugging-constructs
+docker build -t ibmfl .
+docker run -it ibmfl
+ls
+```
+
+
+
+
 
 ![docker](figures/docker.png)
 

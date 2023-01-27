@@ -1,15 +1,8 @@
-# FedDebug
+# FedDebug: Faulty Client Localization
 
-Please run <a target="_blank" href="https://colab.research.google.com/github/warisgill/FedDebug-Artifact/blob/main/artifact.ipynb">
+<!-- Please run <a target="_blank" href="https://colab.research.google.com/github/warisgill/FedDebug-Artifact/blob/main/artifact.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a> to interact with fault localization technique. 
-
-
-
-
-
-## About
-Corresponding code to the paper "FedDebug: Systematic Debugging for Federated Learning Applications" by Waris *et al.*.
+</a> to interact with fault localization technique.  -->
 
 See `INSTALL.md` for further instructions on how to setup your environment for this repo.
 
@@ -18,8 +11,7 @@ CIFAR10 and FEMNIST data are downloaded automatically when running an evaluation
 
 ## FedDebug Performance
 
-We evaluate FEDDEBUG on CIFAR-10 and FEMNIST. Both are considered as gold standard to evaluate both FL frameworks. FEMNIST is a modified version of MNIST presented in
-the FL LEAF Benchmark and the Non-IID Bench. The FEMNIST dataset contains over 340K training and over 40K testing grayscale, 28x28 images spanning ten different classes. CIFAR-10 contains 50K training 32x32 RGB images that span ten different classes and 10K instances for testing. We adopt popular CNN models i.e., ResNet, VGG, and DenseNet architectures [16], [19], [50]. We set the learning rate between 0.0001 and 0.001, the number of epochs between 10 and 25, the batch size from 512 to 2048, and the weight to 0.0001
+We evaluate FEDDEBUG on CIFAR-10 and FEMNIST. Both are considered as gold standard to evaluate both FL frameworks. FEMNIST is a modified version of MNIST presented in the FL LEAF Benchmark and the Non-IID Bench. The FEMNIST dataset contains over 340K training and over 40K testing grayscale, 28x28 images spanning ten different classes. CIFAR-10 contains 50K training 32x32 RGB images that span ten different classes and 10K instances for testing. We adopt popular CNN models i.e., ResNet, VGG, and DenseNet architectures [16], [19], [50]. We set the learning rate between 0.0001 and 0.001, the number of epochs between 10 and 25, the batch size from 512 to 2048, and the weight to 0.0001
 
 These following configurations are available for all architechtures (resnet18, resnet34, resnet50, Desnet121, vgg16) and Dataset (FEMNIST) in `iid` and `niid` settings:
  
