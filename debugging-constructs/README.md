@@ -25,7 +25,7 @@ Please type `"docker build -t ibmfl ."`.  It will build docker form the `Dockerf
 In this tutorial, we will be using Tmux to simulate a distributed FL environment in Docker, representing both FL clients and aggregator. Tmux is a terminal multiplexer that allows you to split your terminal screen horizontally. Tmux allows us to interact with the client and aggregator side of IBMFL and seemlesly move between those two interfaces. To start tmux, simply type '`tmux`' in the terminal. You can check more about `tmux` on this link [Tmux Quick Tutorial](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/).
   
 ### Splitting Screen in Tmux
-To split the screen horizontally, type in a tmux session ` Ctrl + b + " `. It will split the screen into two terminals. 
+To split the screen horizontally, type in a tmux session ` Ctrl + b` followed by `shift + " `. It will split the screen into two terminals. 
 
 ![tmux image](../figures/tmux1.png)
  

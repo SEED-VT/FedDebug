@@ -4,7 +4,7 @@
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a> to interact with fault localization technique.  -->
 
-See `INSTALL.md` for further instructions on how to setup your environment for this repo.
+See `INSTALL.md` for further instructions on how to setup your environment for fault localization.
 
 ## Data
 CIFAR10 and FEMNIST data are downloaded automatically when running an evaluation script. CIFAR10 is downloaded from `PyTorch` library and FEMNIST is downloaded from `LEAF (cmu.edu)`. 
