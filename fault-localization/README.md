@@ -18,7 +18,9 @@ Copy & paste the following commands in the ***first cell*** of notebook (e.g., `
 import sys
 sys.path.append("FedDebug/fault-localization/")
 ```
-Now you can run the second cell of `artifact.ipynb`. You can run notebooks containing `FedDebug` code with the above instructions. **Note:**  *You can uncomment the commands instead of copy & pasting if above commands are already in the given notebook.*
+Now you can run the `artifact.ipynb` (<a target="_blank" href="https://colab.research.google.com/github/SEED-VT/FedDebug/blob/main/fault-localization/artifact.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>). You can run notebooks containing `FedDebug` code with the above instructions. **Note:**  *You can uncomment the commands instead of copy & pasting if above commands are already in the given notebook.*
 
 ### Local Setup
 1. Create a conda environment for example:
