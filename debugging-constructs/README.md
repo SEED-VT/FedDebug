@@ -17,7 +17,7 @@ Below, we provide step-by-step walkthrough of FedDebug's interactive debugging f
 ## Step 1.1: Build FedDebug's Docker Image and Initiate
 Please type `"docker build -t ibmfl ."`.  It will build docker form the `Dockerfile`. To run and interact with `ibmfl` docker type the following command `docker run -it ibmfl`. It will start the docker and now you can interact with it. Type `ls` in the docker shell to display the current directory content to check whether everything is installed correctly.  You can check more about dockers on the following link [Docker Tutorial](https://docs.docker.com/get-started/).
 
-![docker](figures/docker.png)
+![docker](../figures/docker.png)
 
 
 
@@ -27,30 +27,30 @@ In this tutorial, we will be using Tmux to simulate a distributed FL environment
 ### Splitting Screen in Tmux
 To split the screen horizontally, type in a tmux session ` Ctrl + b + " `. It will split the screen into two terminals. 
 
-![tmux image](figures/tmux1.png)
+![tmux image](../figures/tmux1.png)
  
 You can move between terminals (panes) by pressing `Ctrl + b` followed by the `up` and `down` arrows keys. 
 
   
 ## Step 1.2: Running the Aggregator in FedDebug enabled IBMFL
 In one of the tmux terminals, type `python sim_agg.py` to run the aggregator.
-![agg start](figures/python_sim_agg_py.png)
+![agg start](../figures/python_sim_agg_py.png)
 
 After running this command, you will see the following output: "Press key to continue." Right now, ***do not press any key*** and move to another tmux terminal.
 
-![agg start](figures/agg_start_output.png)
+![agg start](../figures/agg_start_output.png)
 
   
 ## Step 1.3: Running the Parties/Clients in FedDebug enabled IBMFL
 In the second terminal, type `python sim_party.py`. This will start the ten parties and connect them to the second aggregator.
-![agg start](figures/python_sim_party.png)
+![agg start](../figures/python_sim_party.png)
 After running this command, you will see the following output:
-![parties connected](figures/parties_connected.png)
+![parties connected](../figures/parties_connected.png)
 
 ## Step 1.4: Starting the Training
 Move back to the aggregator terminal and press `enter key`. This will start the training from the aggregator for `10 rounds with 10 clients`.  Currently, breakpoint is set at round 5, so the terminal will stop displaying logs after `round 5` and you will see the following output:
 
-![breakpoint](figures/breapoint.png). 
+![breakpoint](../figures/breapoint.png). 
 
 ***Note: you can change the `breakpoint` round id in `sim_agg.py`*** 
 
@@ -58,23 +58,23 @@ Move back to the aggregator terminal and press `enter key`. This will start the 
 
 **`help:`** You can type `help` to see all the commands available at the round level in the debugger.
 
-![round help](figures/round-help.png)
+![round help](../figures/round-help.png)
 
   
 **`ls:`** The `ls` command at the round level will display generic information about the round.
 
-![ls round](figures/ls.png)
+![ls round](../figures/ls.png)
 
 **`step next, step back, and step in:`** You can also use the `step next`, `step back`, and  `step in` commands to navigate through the rounds.
 
-![step next-back](figures/step-next-in-back.png)
+![step next-back](../figures/step-next-in-back.png)
 
 
 ## Step 1.6: Navigating inside a Round with FedDebug
 
 After `step in` you can also type `help` to see the commands available inside a round.
 
-![client help command](figures/client-help.png)
+![client help command](../figures/client-help.png)
 
  
 **`ls:`** You can use the `ls`  command inside a round to display all the clients in the round with their accuracies. 
@@ -85,22 +85,22 @@ After `step in` you can also type `help` to see the commands available inside a 
 
   
 
-![ls and agg commands](figures/client-ls-agg.png)
+![ls and agg commands](../figures/client-ls-agg.png)
 
  
 **`step out:`** To leave a round, you can also use the `step out` command to step out of a round.
-![step out command](figures/step-out.png)
+![step out command](../figures/step-out.png)
 
  
 ## Step 1.7: Removing a Client with FedDebug
 
 **`remove client <client id>:`** Suppose that you identify a faulty client in `round 8`, you can remove its contribution from the round using the `remove client <client id>` command. 
 
-![remove client command](figures/remove-client.png)
+![remove client command](../figures/remove-client.png)
 
 This will resume the training from `round 9` instead of `round 5`, and the faulty client will not be included from `round 8`.
 
-![Result of remove client command](figures/remove-client-result.png)
+![Result of remove client command](../figures/remove-client-result.png)
 
 **Note: After removing the client, the training is complete. **
  
@@ -108,7 +108,7 @@ This will resume the training from `round 9` instead of `round 5`, and the fault
 
 To check the functionality of  `resume` command, restart the aggregator (`python sim_agg.py`) and clients ((`python sim_party.py`))  as explained above. Perform some actions (e.g., `step in, step out, ls` etc ), except  `remove client`. Suppose that there is no faulty client and you want resume the training without any further debugging. You can type `resume` to resume training and you will see that the aggregator immediately displays the the output of all the rounds without any retraining.  
 
-![resume](figures/resume.png).
+![resume](../figures/resume.png).
 
 
 # 2. Automated faulty Client Localization with FedDebug.
