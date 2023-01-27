@@ -2,9 +2,7 @@
 import torch
 import torch.nn.functional as F
 import itertools
-from tqdm import tqdm
-from .dl_models import initialize_model
-
+import copy
 
 def makeAllSubsetsofSizeN(s, n):
     assert n < len(s)
@@ -12,25 +10,33 @@ def makeAllSubsetsofSizeN(s, n):
     l_of_lists = [set(sub) for sub in l_of_subsets]
     return l_of_lists
 
+def testAccModel(model, valid, use_gpu=True):
+    testloader = torch.utils.data.DataLoader(
+        valid, batch_size=2048, shuffle=False, num_workers=4)
+    
+    device = torch.device("cpu")
+    if use_gpu:
+        device = torch.device("cuda")
+    
+    model = model.to(device)
+    model.eval()
+    total = 0
+    correct = 0 
+    with torch.no_grad():
+        for data in testloader:
+                
+            images, labels = data[0].to(device), data[1].to(device)
+            batch_outputs = model(images)
 
-# def loadModelsFromCheckpoints(checkpoint_path, model_config, total_clients, faulty_clients, faultyion_level):
-#     def loadM(p):
-#         model = initialize_model(model_config)
-#         model.load_state_dict(torch.load(p))
-#         model.eval()
-#         return model
+            batch_probs = F.softmax(batch_outputs, dim=1)
+            confs_batch, preds_batch = torch.max(batch_probs, dim=1)
 
-#     normal_clients_ms = [ckpt for ckpt in [
-#         checkpoint_path + f"client_{client}.pt" for client in range(total_clients) if client not in faulty_clients]]
-#     faulty_clients_ms = [ckpt for ckpt in [
-#         checkpoint_path + f"faulty_client_{faulty_id}_noise_rate_{faultyion_level}_classes.pt" for faulty_id in faulty_clients]]
+            total += labels.size(0)
+            correct += (preds_batch == labels).sum().item()
+    
+    prediction_acc = round((correct/total)*100,2)
 
-#     all_ckpts = faulty_clients_ms + normal_clients_ms
-
-#     clients_models = [loadM(ckpt) for ckpt in tqdm(
-#         all_ckpts, desc=f"Loading {model_config['model_name']} models")]
-#     return clients_models
-
+    return prediction_acc        
 
 def getAndprintClientsValAcc(models, valid, use_gpu):
 
@@ -93,12 +99,6 @@ def evalauteFaultyClientLocalization2(args, noise_rate, client2acc, exp2info, t,
     
     detection_accuracy = (true_seq/args.total_random_inputs) * 100
     
-
-
-
-    
-    
-    
     result2info = {}
     result2info["gpu"] = args.gpu
     result2info["Dataset"] = exp2info['data_config']['name']
@@ -124,3 +124,26 @@ def evalauteFaultyClientLocalization2(args, noise_rate, client2acc, exp2info, t,
 
     print(f"+{log}")
     return result2info
+
+
+
+
+def aggToUpdateGlobalModel(clients_models):
+    temp_key = list(clients_models.keys())[0]
+    global_dict = copy.deepcopy(
+        clients_models[temp_key].state_dict())  # due to pytorch lighing
+    for k in global_dict.keys():
+        l = [clients_models[i].state_dict()[k]for i in range(len(clients_models))]
+        s = 0        # print(l[0])
+        for t in l:
+            s += t
+        global_dict[k] = s / len(l)
+    # updating the global model with the mean of the client models wieights
+    
+    global_model = copy.deepcopy(clients_models[0])
+    
+    global_model.load_state_dict(global_dict)
+    global_model.eval()
+    # global_model.model.eval()
+    return global_model
+

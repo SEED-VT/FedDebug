@@ -20,6 +20,8 @@ Copy & paste the following commands in the ***first cell*** of notebook (e.g., `
 
 !pip install pytorch-lightning
 
+!pip install matplotlib
+
 !pip install diskcache
 
 !pip install dotmap
@@ -55,6 +57,8 @@ Now you can run the `artifact.ipynb` (<a  target="_blank"  href="https://colab.r
 ```
 
 pip install pytorch-lightning
+
+pip install matplotlib
 
 pip install diskcache
 
