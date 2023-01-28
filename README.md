@@ -195,7 +195,7 @@ cd FedDebug/fault-localization
 
 See `INSTALL.md` for further instructions on how to setup your environment for fault localization.
 
-***Note: To run locally, make sure you have an NVIDA GPU in your machine.***
+***Note: To run locally, make sure you have an NVIDIA GPU in your machine.***
 
   
 ## 2.2 Evaluations
