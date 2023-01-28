@@ -127,13 +127,13 @@ To check the functionality of  `resume` command, restart the aggregator (`python
 
 # 2. FedDebug: Faulty Client Localization
   
-At a given faulty round in an FL campaign, `FedDebug` can automatically identify faulty clients without needing test data or labels. The following steps provide a walk-through of this feature using a reconfigurable python notebook.
+At a given faulty round in an FL campaign, `FedDebug` can automatically identify faulty clients without needing test data or labels. The following steps provide a walk-through of this feature using both reconfigurable computational notebooks as well as local python setup. 
 
 ## 2.1 Installation
 
 ### Google Colab Setup
 
-> ***Make sure you configure notebook with GPU: Click Edit->notebook settings->hardware accelerator->GPU***
+> ***Make sure you configure the notebook with GPU: Click Edit->notebook settings->hardware accelerator->GPU***
 
 
 Copy & paste the following commands in the ***first cell*** of notebook (e.g., `artifact.ipynb`) on `Google Colab`.
@@ -152,9 +152,19 @@ sys.path.append("FedDebug/fault-localization/")
 
 Now you can run the `artifact.ipynb` (<a  target="_blank"  href="https://colab.research.google.com/github/SEED-VT/FedDebug/blob/main/fault-localization/artifact.ipynb"><img  src="https://colab.research.google.com/assets/colab-badge.svg"  alt="Open In Colab"/></a>). You can run notebooks containing `FedDebug` code with the above instructions. **Note:**  *You can uncomment the commands instead of copy & pasting if above commands are already in the given notebook.*
 
-  
+The notebook is configured to use the following default settings, where the first client (client id 0) is faulty (with noisy labels that distort the global FL model).  
 
-  
+```
+args.model = "resnet50" # [resnet18, resnet34, resnet50, densenet121, vgg16]
+args.epochs = 2  # range 10-25
+args.dataset = "cifar10" # ['cifar10', 'femnist']
+args.clients = 5 # keep under 30 clients and use Resnet18, Resnet34, or Densenet to evaluate on Colab 
+args.faulty_clients_ids = "0" # can be multiple clients separated by comma e.g. "0,1,2"  but keep under args.clients clients and at max less than 7 
+args.noise_rate = 1  # noise rate 0 to 1 
+args.sampling = "iid" # [iid, "niid"] 
+```
+
+Once the entire notebook is exectued, the logs report the progress and eventually print the id of the client that is faulty. This is printed in the form `+++ Faulty Clients {0}` where 0 is the client id, for each auto generated input (defautl is 10).  It also reports the final localization accuracy. 
 
   
 
