@@ -4,7 +4,7 @@
 
 The ArXiv version of the manuscript is avaibable at : [FedDebug](https://arxiv.org/abs/2301.03553)
 
-For any question regarding FedDebug's artifact should be directed to Waris Gill [waris@vt.edu ](mailto:waris@vt.edu)
+For any question regarding FedDebug's artifact should be directed to Waris Gill at [waris@vt.edu ](mailto:waris@vt.edu)
 
 FedDebug enables interactive and automated fault localization in Federation Learning (FL) applications. It adapts conventional debugging practices in FL with its breakpoint and fix & replay featur and it offers a novel differential testing technique to automatically identify the precise faulty clients.FedDebug tool artifact comprises a two-step process
   - Interactive Debugging Constructs integrated with IBMFL framework via **FL simulation in a Docker Image**  
