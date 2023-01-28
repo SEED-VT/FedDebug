@@ -45,7 +45,6 @@ class InferenceGuidedInputs:
         return img
 
     def _simpleRandomInputs(self):
-        print(">> Deubg: Simple Random inputs")
         start = time.time()
         random_inputs = [self._getRandomInput()
                        for _ in range(self.k_gen_inputs)]
