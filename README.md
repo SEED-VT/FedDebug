@@ -152,7 +152,7 @@ sys.path.append("FedDebug/fault-localization/")
 
 Now you can run the `artifact.ipynb` (<a  target="_blank"  href="https://colab.research.google.com/github/SEED-VT/FedDebug/blob/main/fault-localization/artifact.ipynb"><img  src="https://colab.research.google.com/assets/colab-badge.svg"  alt="Open In Colab"/></a>). You can run notebooks containing `FedDebug` code with the above instructions. **Note:**  *You can uncomment the commands instead of copy & pasting if above commands are already in the given notebook.*
 
-The notebook is configured to use the following default settings, where the first client (client id 0) is faulty (with noisy labels that distort the global FL model).  
+The notebook is configured to use the following default settings, where the first client (client ID 0) is faulty (with noisy labels that distort the global FL model).  
 
 ```
 args.model = "resnet50" # [resnet18, resnet34, resnet50, densenet121, vgg16]
@@ -164,7 +164,7 @@ args.noise_rate = 1  # noise rate 0 to 1
 args.sampling = "iid" # [iid, "niid"] 
 ```
 
-Once the entire notebook is exectued, the logs report the progress and eventually print the id of the client that is faulty. This is printed in the form `+++ Faulty Clients {0}` where 0 is the client id, for each auto generated input (defautl is 10).  It also reports the final localization accuracy. 
+Once the entire notebook is executed, the logs report the progress and eventually print the faulty client's id. This is printed in the form `+++ Faulty Clients {0}` where 0 is the client ID for each auto-generated input (default is 10). It also reports the final localization accuracy. 
 
   
 
