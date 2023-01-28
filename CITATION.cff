@@ -1,0 +1,30 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  FedDebug: Systematic Debugging for Federated Learning
+  Applications
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Waris
+    family-names: Gill
+    email: waris@vt.edu
+    name-particle: Waris
+    affiliation: Virginia Tech
+  - given-names: Muhammad Ali
+    family-names: Gulzar
+    name-particle: Muhammad Ali
+    email: gulzar@cs.vt.edu
+    affiliation: Virginia Tech
+  - given-names: Ali
+    family-names: Anwar
+    name-particle: Ali
+    email: aanwar@umn.edu
+    affiliation: University of Minnesota
+identifiers:
+  - type: url
+    value: 'https://arxiv.org/pdf/2301.03553.pdf'
