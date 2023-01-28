@@ -10,8 +10,10 @@ from pytorch_lightning import seed_everything
 from .dl_models import ImageClassifer, initialize_model
 from .fl_datasets import *
 
-logging.basicConfig(filename='example.log', level=logging.ERROR)
-logger = logging.getLogger("pytorch_lightning")
+# logging.basicConfig(filename='example.log', level=logging.ERROR)
+# logger = logging.getLogger("pytorch_lightning")
+logging.getLogger("pytorch_lightning").setLevel(logging.WARNING)
+
 seed_everything(786)
 
 
@@ -126,7 +128,7 @@ def trainFLMain(args):
             stringID2intID[k] = normal_id
 
     data_config["single_input_shape"] = valid[0][0].unsqueeze(0).shape
-    print(f'input shape, {data_config["single_input_shape"]}')
+    # print(f'input shape, {data_config["single_input_shape"]}')
     # return
 
     model_config["classes"] = num_classes

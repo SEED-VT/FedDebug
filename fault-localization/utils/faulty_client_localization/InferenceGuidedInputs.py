@@ -11,7 +11,7 @@ class InferenceGuidedInputs:
     def __init__(self, clients2models, shape, randomGenerator, apply_transform, dname=None, k_gen_inputs=10, min_nclients_same_pred=5, time_delta=60):
         self.clients2models = clients2models
         self.min_nclients_same_pred = 3 #min_nclients_same_pred
-        print(f"Same prediction threshold {self.min_nclients_same_pred}")
+        # print(f"Same prediction threshold {self.min_nclients_same_pred}")
         self.same_seqs_set = set()
         self.k_gen_inputs = k_gen_inputs
         self.size = 1024

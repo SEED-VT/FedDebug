@@ -273,8 +273,8 @@ class FedDataModule(LightningDataModule):
             print(
                 f"Dropping last batch because of uneven data size: {len(self.train_dataset)} % {self.batch_size} == 1")
 
-        print(
-            f"Train mod batch = {len(train_dataset) % batch_size}, and drop_last = {self.drop_last}")
+        # print(
+        #     f"Train mod batch = {len(train_dataset) % batch_size}, and drop_last = {self.drop_last}")
 
     def train_dataloader(self):
         return DataLoader(self.train_dataset, batch_size=self.batch_size, num_workers=self.num_workers, pin_memory=True, shuffle=True, drop_last=self.drop_last)
