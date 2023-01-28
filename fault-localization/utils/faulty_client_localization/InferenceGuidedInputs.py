@@ -10,7 +10,7 @@ from torch.nn.init import (kaiming_normal_, kaiming_uniform_, normal_,
 class InferenceGuidedInputs:
     def __init__(self, clients2models, shape, randomGenerator, apply_transform, dname=None, k_gen_inputs=10, min_nclients_same_pred=5, time_delta=60):
         self.clients2models = clients2models
-        self.min_nclients_same_pred = min_nclients_same_pred
+        self.min_nclients_same_pred = 3 #min_nclients_same_pred
         print(f"Same prediction threshold {self.min_nclients_same_pred}")
         self.same_seqs_set = set()
         self.k_gen_inputs = k_gen_inputs
@@ -51,8 +51,10 @@ class InferenceGuidedInputs:
         return random_inputs, time.time()-start
 
     def getInputs(self):
-        return self._simpleRandomInputs()
-        # return self._generateFeedBackRandomInputs1()
+        if len(self.clients2models) <= 10:
+            return self._simpleRandomInputs()
+        else:
+            return self._generateFeedBackRandomInputs1()
 
     def _predictFun(self, model, input_tensor):
         model.eval()
