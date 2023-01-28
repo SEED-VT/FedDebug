@@ -12,7 +12,9 @@ FedDebug enables interactive and automated fault localization in Federation Lear
 # 1. Interactive debugging of FL Applications in IBMFL with FedDebug
 FedDebug's interactive debugging module takes inspiration from traditional debuggers, such as gdb, and enables real-time interactive debugging on a simulation of a live FL application. 
 
-Below, we provide step-by-step walkthrough of FedDebug's interactive debugging features in IBMFL. For ease of installation, we offer pre-configured *Docker Image* of FedDebug enabled IBMFL.  
+Below, we provide step-by-step walkthrough of FedDebug's interactive debugging features in IBMFL. For ease of installation, we offer pre-configured *Docker Image* of FedDebug enabled IBMFL. 
+
+> Note: IBM uses term `party` to represent end devices and in `FedDebug` we have used `client` (i.e., `party` and `client` refers the same end organizations and users.)
 
 ## Step 1.1: Build FedDebug's Docker Image and Initiate
 Go to `debugging constructs` directory (`cd debugging-constructs`). Please type `"docker build -t ibmfl ."`.  It will build docker form the `Dockerfile`. To run and interact with `ibmfl` docker type the following command `docker run -it ibmfl`. It will start the docker and now you can interact with it. Type `ls` in the docker shell to display the current directory content to check whether everything is installed correctly.  You can check more about dockers on the following link [Docker Tutorial](https://docs.docker.com/get-started/).
@@ -33,7 +35,7 @@ ls
 
 
 ### Tmux Tutorial
-In this tutorial, we will be using Tmux to simulate a distributed FL environment in Docker, representing both FL clients and aggregator. Tmux is a terminal multiplexer that allows you to split your terminal screen horizontally. Tmux allows us to interact with the client and aggregator side of IBMFL and seemlesly move between those two interfaces. To start tmux, simply type '`tmux`' in the terminal. You can check more about `tmux` on this link [Tmux Quick Tutorial](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/).
+In this tutorial, we will be using Tmux to simulate a distributed FL environment in Docker, representing both FL clients and aggregator. Tmux is a terminal multiplexer that allows you to split your terminal screen horizontally. Tmux allows us to interact with the client and aggregator side of IBMFL and seemlessly move between those two interfaces. To start tmux, simply type '`tmux`' in the terminal. You can check more about `tmux` on this link [Tmux Quick Tutorial](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/).
   
 ### Splitting Screen in Tmux
 To split the screen horizontally, type in a tmux session ` Ctrl + b` followed by `shift + " `. It will split the screen into two terminals. 
