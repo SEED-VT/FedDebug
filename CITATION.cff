@@ -28,3 +28,4 @@ authors:
 identifiers:
   - type: url
     value: 'https://arxiv.org/pdf/2301.03553.pdf'
+repository-artifact: 'https://github.com/SEED-VT/FedDebug'
