@@ -240,7 +240,7 @@ Although `artifact.ipynb` is sufficient to evaluate any configuration of `FedDeb
 
   
 
->***Note: We have scaled down the the experiments (e.g., reduce the number of epochs, small number of clients, etc) to assist reviewers to quickly validate the fundamentals of `FedDebug` and fit with `Google Colab` resources. However, you are welcome to test it with any configuration mentioned in `FedDebug` evolutions. Furthermore, if you see an unexpected result, please increase the number of `epochs` to the value mention in `Section V: Evaluations` and read `Section V.D Threat To Validity section`.***
+>***Note: We have scaled down the the experiments (e.g., reduce the number of epochs, small number of clients, etc) to assist reviewers to quickly validate the fundamentals of `FedDebug` and fit with `Google Colab` resources. However, you are welcome to test it with any valid FL configuration. Furthermore, if you see an unexpected result, please increase the number of `epochs` to the value mention in `Section V: Evaluations` and read `Section V.D Threat To Validity section`.***
 
   
 
