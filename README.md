@@ -4,6 +4,8 @@
 
 The ArXiv version of the manuscript is avaibable at : [FedDebug](https://arxiv.org/abs/2301.03553)
 
+For any question regarding FedDebug's artifact should be directed to Waris Gill at [waris@vt.edu ](mailto:waris@vt.edu)
+
 FedDebug enables interactive and automated fault localization in Federation Learning (FL) applications. It adapts conventional debugging practices in FL with its breakpoint and fix & replay featur and it offers a novel differential testing technique to automatically identify the precise faulty clients.FedDebug tool artifact comprises a two-step process
   - Interactive Debugging Constructs integrated with IBMFL framework via **FL simulation in a Docker Image**  
   - Automated Faulty Client Localization  via **Google Colab Notebooks**
@@ -127,13 +129,13 @@ To check the functionality of  `resume` command, restart the aggregator (`python
 
 # 2. FedDebug: Faulty Client Localization
   
-`FedDebug's` novel automated fault localization approach precisely identifies the faulty client without ever needing any test data or labels. To have a measurable impact on the global model, a faulty client’s model must behave differently than the regular clients. Every client in an FL application has the same model architecture, so their internal behaviors are comparable. Based on this insight, generates random inputs adapts differential testing to FL domain. It captures differences in the models’ execution via neuron activations instead of output labels to identify diverging behavior of a faulty client. Note that auto-generated data does not include the class label and thus we cannot use it as an oracle.
+At a given faulty round in an FL campaign, `FedDebug` can automatically identify faulty clients without needing test data or labels. The following steps provide a walk-through of this feature using both reconfigurable computational notebooks as well as local python setup. 
 
 ## 2.1 Installation
 
 ### Google Colab Setup
 
-> ***Make sure you configure notebook with GPU: Click Edit->notebook settings->hardware accelerator->GPU***
+> ***Make sure you configure the notebook with GPU: Click Edit->notebook settings->hardware accelerator->GPU***
 
 
 Copy & paste the following commands in the ***first cell*** of notebook (e.g., `artifact.ipynb`) on `Google Colab`.
@@ -152,9 +154,19 @@ sys.path.append("FedDebug/fault-localization/")
 
 Now you can run the `artifact.ipynb` (<a  target="_blank"  href="https://colab.research.google.com/github/SEED-VT/FedDebug/blob/main/fault-localization/artifact.ipynb"><img  src="https://colab.research.google.com/assets/colab-badge.svg"  alt="Open In Colab"/></a>). You can run notebooks containing `FedDebug` code with the above instructions. **Note:**  *You can uncomment the commands instead of copy & pasting if above commands are already in the given notebook.*
 
-  
+The notebook is configured to use the following default settings, where the first client (client ID 0) is faulty (with noisy labels that distort the global FL model).  
 
-  
+```
+args.model = "resnet50" # [resnet18, resnet34, resnet50, densenet121, vgg16]
+args.epochs = 2  # range 10-25
+args.dataset = "cifar10" # ['cifar10', 'femnist']
+args.clients = 5 # keep under 30 clients and use Resnet18, Resnet34, or Densenet to evaluate on Colab 
+args.faulty_clients_ids = "0" # can be multiple clients separated by comma e.g. "0,1,2"  but keep under args.clients clients and at max less than 7 
+args.noise_rate = 1  # noise rate 0 to 1 
+args.sampling = "iid" # [iid, "niid"] 
+```
+
+Once the entire notebook is executed, the logs report the progress and eventually print the faulty client's id. This is printed in the form `+++ Faulty Clients {0}` where 0 is the client ID for each auto-generated input (default is 10). It also reports the final localization accuracy. 
 
   
 
@@ -195,7 +207,7 @@ cd FedDebug/fault-localization
 
 See `INSTALL.md` for further instructions on how to setup your environment for fault localization.
 
-***Note: To run locally, make sure you have an NVIDA GPU in your machine.***
+***Note: To run locally, make sure you have an NVIDIA GPU in your machine.***
 
   
 ## 2.2 Evaluations
@@ -230,7 +242,7 @@ Although `artifact.ipynb` is sufficient to evaluate any configuration of `FedDeb
 
   
 
->***Note: We have scaled down the the experiments (e.g., reduce the number of epochs, small number of clients, etc) to assist reviewers to quickly validate the fundamentals of `FedDebug` and fit with `Google Colab` resources. However, you are welcome to test it with any configuration mentioned in `FedDebug` evolutions. Furthermore, if you see an unexpected result, please increase the number of `epochs` to the value mention in `Section V: Evaluations` and read `Section V.D Threat To Validity section`.***
+>***Note: We have scaled down the the experiments (e.g., reduce the number of epochs, small number of clients, etc) to assist reviewers to quickly validate the fundamentals of `FedDebug` and fit with `Google Colab` resources. However, you are welcome to test it with any valid FL configuration. Furthermore, if you see an unexpected result, please increase the number of `epochs` to the value mention in `Section V: Evaluations` and read `Section V.D Threat To Validity section`.***
 
   
 
