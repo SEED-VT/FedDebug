@@ -15,16 +15,17 @@ authors:
     email: waris@vt.edu
     name-particle: Waris
     affiliation: Virginia Tech
-  - given-names: Muhammad Ali
-    family-names: Gulzar
-    name-particle: Muhammad Ali
-    email: gulzar@cs.vt.edu
-    affiliation: Virginia Tech
   - given-names: Ali
     family-names: Anwar
     name-particle: Ali
     email: aanwar@umn.edu
     affiliation: University of Minnesota
+  - given-names: Muhammad Ali
+    family-names: Gulzar
+    name-particle: Muhammad Ali
+    email: gulzar@cs.vt.edu
+    affiliation: Virginia Tech
+
 identifiers:
   - type: url
     value: 'https://arxiv.org/pdf/2301.03553.pdf'
