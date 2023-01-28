@@ -127,7 +127,7 @@ To check the functionality of  `resume` command, restart the aggregator (`python
 
 # 2. FedDebug: Faulty Client Localization
   
-`FedDebug's` novel automated fault localization approach precisely identifies the faulty client without ever needing any test data or labels. To have a measurable impact on the global model, a faulty client’s model must behave differently than the regular clients. Every client in an FL application has the same model architecture, so their internal behaviors are comparable. Based on this insight, generates random inputs adapts differential testing to FL domain. It captures differences in the models’ execution via neuron activations instead of output labels to identify diverging behavior of a faulty client. Note that auto-generated data does not include the class label and thus we cannot use it as an oracle.
+At a given faulty round in an FL campaign, `FedDebug` can automatically identify faulty clients without needing test data or labels. The following steps provide a walk-through of this feature using a reconfigurable python notebook.
 
 ## 2.1 Installation
 
