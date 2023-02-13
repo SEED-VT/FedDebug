@@ -6,11 +6,10 @@ The ArXiv version of the manuscript is avaibable at : [FedDebug](https://arxiv.o
 
 For any question regarding FedDebug's artifact should be directed to Waris Gill at [waris@vt.edu ](mailto:waris@vt.edu)
 
-FedDebug enables interactive and automated fault localization in Federation Learning (FL) applications. It adapts conventional debugging practices in FL with its breakpoint and fix & replay featur and it offers a novel differential testing technique to automatically identify the precise faulty clients.FedDebug tool artifact comprises a two-step process
-  - Section 1: Usage and Example -- Interactive Debugging Constructs integrated with IBMFL framework via **FL simulation in a Docker Image**  
-  - Section 2: Usage and Example -- Automated Faulty Client Localization  via **Google Colab Notebooks**
-  - Section 3: Replication -- Reproducing Experimental Results via **Google Colab Notebooks**
-
+FedDebug enables interactive and automated fault localization in Federation Learning (FL) applications. It adapts conventional debugging practices in FL with its breakpoint and fix & replay featur and it offers a novel differential testing technique to automatically identify the precise faulty clients. FedDebug tool artifact comprises a two-step process.
+  - [Section 1: Usage and Example](https://github.com/SEED-VT/FedDebug#section-1-interactive-debugging-of-fl-applications-in-ibmfl-with-feddebug) -- Interactive Debugging Constructs integrated with IBMFL framework via **FL simulation in a Docker Image**  
+  - [Section 2: Usage and Example](https://github.com/SEED-VT/FedDebug#section-2-feddebug-faulty-client-localization) -- Automated Faulty Client Localization  via **Google Colab Notebooks**
+  - [Section 3: Replication](https://github.com/SEED-VT/FedDebug#section-3-reproducing-experimental-results) -- Reproducing Experimental Results via **Google Colab Notebooks**
 
 # Section 1. Interactive debugging of FL Applications in IBMFL with FedDebug
 FedDebug's interactive debugging module takes inspiration from traditional debuggers, such as gdb, and enables real-time interactive debugging on a simulation of a live FL application. 
