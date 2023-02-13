@@ -7,11 +7,12 @@ The ArXiv version of the manuscript is avaibable at : [FedDebug](https://arxiv.o
 For any question regarding FedDebug's artifact should be directed to Waris Gill at [waris@vt.edu ](mailto:waris@vt.edu)
 
 FedDebug enables interactive and automated fault localization in Federation Learning (FL) applications. It adapts conventional debugging practices in FL with its breakpoint and fix & replay featur and it offers a novel differential testing technique to automatically identify the precise faulty clients.FedDebug tool artifact comprises a two-step process
-  - Interactive Debugging Constructs integrated with IBMFL framework via **FL simulation in a Docker Image**  
-  - Automated Faulty Client Localization  via **Google Colab Notebooks**
+  - Section 1: Usage and Example -- Interactive Debugging Constructs integrated with IBMFL framework via **FL simulation in a Docker Image**  
+  - Section 2: Usage and Example -- Automated Faulty Client Localization  via **Google Colab Notebooks**
+  - Section 3: Replication -- Reproducing Experimental Results via **Google Colab Notebooks**
 
 
-# 1. Interactive debugging of FL Applications in IBMFL with FedDebug
+# Section 1. Interactive debugging of FL Applications in IBMFL with FedDebug
 FedDebug's interactive debugging module takes inspiration from traditional debuggers, such as gdb, and enables real-time interactive debugging on a simulation of a live FL application. 
 
 Below, we provide step-by-step walkthrough of FedDebug's interactive debugging features in IBMFL. For ease of installation, we offer pre-configured *Docker Image* of FedDebug enabled IBMFL. 
@@ -127,7 +128,7 @@ To check the functionality of  `resume` command, restart the aggregator (`python
 ![resume](figures/resume.png).
 
 
-# 2. FedDebug: Faulty Client Localization
+# Section 2. FedDebug: Faulty Client Localization
   
 At a given faulty round in an FL campaign, `FedDebug` can automatically identify faulty clients without needing test data or labels. The following steps provide a walk-through of this feature using both reconfigurable computational notebooks as well as local python setup. 
 
@@ -236,7 +237,7 @@ args.sampling = "iid" # [iid, "niid"]
 
   
 
-## 2.3 Results:
+# Section 3. Reproducing Experimental Rsults:
 
 Although `artifact.ipynb` is sufficient to evaluate any configuration of `FedDebug`, we further extended it to reproduce the major results with just a single click on `Google Colab` except the scalability result `Reproduce_Figure9.ipynb`. You can reproduce the scalability result on a local machine which has enough resources to train 400 models.
 
