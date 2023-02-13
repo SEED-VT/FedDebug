@@ -237,7 +237,7 @@ args.sampling = "iid" # [iid, "niid"]
 
   
 
-# Section 3. Reproducing Experimental Rsults:
+# Section 3. Reproducing Experimental Results:
 
 Although `artifact.ipynb` is sufficient to evaluate any configuration of `FedDebug`, we further extended it to reproduce the major results with just a single click on `Google Colab` except the scalability result `Reproduce_Figure9.ipynb`. You can reproduce the scalability result on a local machine which has enough resources to train 400 models.
 
