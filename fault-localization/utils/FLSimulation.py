@@ -18,7 +18,7 @@ seed_everything(786)
 
 
 def _trainModel(pl_model, train_dataset, val_dataset, data_config, epochs, checkpoint_path):
-    trainer = pl.Trainer(accelerator='gpu', devices=1, max_epochs=epochs, precision=16,
+    trainer = pl.Trainer(accelerator='gpu', devices=1, max_epochs=epochs, precision='16-mixed',
                          check_val_every_n_epoch=3, limit_val_batches=0.25, enable_model_summary=None, enable_checkpointing=False, logger=False)
     dm = FedDataModule(train_dataset, val_dataset,
                        data_config["batch_size"])

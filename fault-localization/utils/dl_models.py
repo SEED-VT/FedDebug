@@ -121,14 +121,15 @@ class ImageClassifer(LightningModule):
         logits = self(x)
         loss = self.get_loss(logits, y)
         preds = torch.argmax(F.log_softmax(logits, dim=1) , dim=1)
-        return {'loss':loss, "preds":preds, "target":y}
+        self.log('val_loss', loss)  # Important for ReduceLROnPlateau
+        return {'val_loss':loss, "preds":preds, "target":y}
     
     def validation_step_end(self,outputs): # due to multi gpu training
         self.accuracy(outputs["preds"],outputs["target"])
         self.temp_accuracy = self.accuracy.compute()
         # print(self.temp_accuracy)
         self.log("val_acc", self.accuracy, prog_bar=True)
-        self.log("val_loss", outputs["loss"], prog_bar=True)
+        self.log("val_loss", outputs["val_loss"], prog_bar=True)
 
     def test_step(self, batch, batch_idx):
         # Here we just reuse the validation_step for testing
@@ -145,10 +146,22 @@ class ImageClassifer(LightningModule):
         self.log("test_loss", outputs["loss"], prog_bar=True)
     
     def configure_optimizers(self):
+    #     optimizer = torch.optim.Adam(self.parameters(), lr=self.lr, weight_decay=self.config['weight_decay'])
+    #     d = {
+    #    'optimizer': optimizer,
+    #    'lr_scheduler': torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode = "min", factor = 0.25, patience=3, verbose=True),
+    #    'monitor': 'val_loss'            
+    #     }
+    #     return d
         optimizer = torch.optim.Adam(self.parameters(), lr=self.lr, weight_decay=self.config['weight_decay'])
-        d = {
-       'optimizer': optimizer,
-       'lr_scheduler': torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode = "min", factor = 0.25, patience=3, verbose=True),
-       'monitor': 'val_loss'            
-        }
-        return d
+        
+        # optimizer = torch.optim.Adam(self.parameters(), lr=0.001)
+        # scheduler = {
+        #     'scheduler': torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.2, patience=5),
+        #     'monitor': 'val_loss',  # Name of the metric to monitor
+        #     'interval': 'epoch',
+        #     'frequency': 1,
+        #     'strict': True,
+        # }
+        # return [optimizer], [scheduler]
+        return optimizer
